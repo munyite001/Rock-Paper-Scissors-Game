@@ -1,12 +1,19 @@
 import React from 'react';
 import { useState } from 'react';
 import Board from './Components/Board';
+import Modal from './Components/Modal';
 
 export default function App()
 {
     const [score, setScore] = useState(0);
     const [userChoice, setUserChoice] = useState(null)
-    
+    const [modal, setModal] = useState(false);
+
+    function togleModal()
+    {
+        setModal(!modal)
+    }
+
     function handleChoice(val)
     {
         setUserChoice(val)
@@ -15,6 +22,7 @@ export default function App()
 
     return(
     <div className="app">
+        {modal && (<Modal setModal={togleModal}/>)}
         <div className="score-board">
             <h2>ROCK<br/>PAPER<br/>SCISSORS</h2>
             <div className="score-container">
@@ -23,7 +31,8 @@ export default function App()
             </div>
         </div>
         {userChoice == null ? <Board userChoice={handleChoice}/>: "This is a test"}
-        <button className='rules'>rules</button>
+        <button className='rules-btn' onClick={togleModal}>rules</button>
     </div>
     );
 }
+

@@ -82,6 +82,7 @@ body {
 .board {
   width: 85%;
   max-width: 500px;
+  max-height: 400px;
   height: 60vh;
   background-color: transparent;
   margin: 3rem auto 0;
@@ -176,5 +177,11 @@ body {
   
   .board .disk-outer:nth-child(3) {
     right: 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .rules {
+    right: 1rem;
   }
 }

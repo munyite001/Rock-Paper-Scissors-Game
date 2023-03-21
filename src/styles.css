@@ -1,0 +1,178 @@
+/*===================
+        ROOT
+======================*/
+:root {
+  --Scissors-Gradient: linearg-radient(45deg, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+  --Paper-Gradient: linear-gradient(45deg, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  --Rock-Gradient: linear-gradient(45deg, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  --Lizard-Gradient: linear-gradient(45deg, hsl(261, 73%, 60%), hsl(261, 72%, 63%));
+  --Cyan: linear-gradient(45deg, hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+  --Dark-Text: hsl(229, 25%, 31%);
+  --Score-Text: hsl(229, 64%, 46%);
+  --Header-Outline: hsl(217, 16%, 45%);
+  --Radial-Gradient: linear-gradient(180deg, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  background: var(--Radial-Gradient);
+  padding: 5rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score-board {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  max-width: 700px;
+  border: 4px solid var(--Header-Outline);
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 1rem 2rem 1rem 1rem;
+}
+
+.score-board h2 {
+  font-size: 20px;
+  line-height: 17px;
+  letter-spacing: 0.1rem;
+  color: white;
+}
+
+.score-container {
+  background-color: white;
+  width: 25%;
+  max-width: 90px;
+  height: 75px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  border-radius: 5px;
+  position: relative;
+  padding: 0.5rem;
+}
+
+.score-container h3 {
+  font-size: 16px;
+  color: var(--Score-Text);
+}
+
+.score-container .score {
+  font-size: 50px;
+  position: absolute;
+  color: var(--Dark-Text);
+  margin: 0.5rem 0 0.1rem;
+}
+
+.board {
+  width: 85%;
+  max-width: 500px;
+  height: 60vh;
+  background-color: transparent;
+  margin: 3rem auto 0;
+  background-image: url(./Images/bg-triangle.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/* Single Disk */
+.disk-outer {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: 0px 2px 1px hsl(230, 89%, 62%);
+  position: absolute;
+}
+
+.board .disk-outer:nth-child(1) {
+  left: 0;
+}
+
+.board .disk-outer:nth-child(2) {
+  bottom: 5rem;
+}
+
+.board .disk-outer:nth-child(3) {
+  right: 0;
+}
+
+
+
+.disk-inner {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  background: white;
+  display: grid;
+  place-items: center;
+  box-shadow: 0px -3px 1px rgba(255, 255, 255, 0.3);
+}
+
+.choice-icon {
+  width: 50%;
+}
+
+.rules {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  outline: none;
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  width: 6rem;
+  height: 2rem;
+  transition: all 0.2s linear;
+}
+
+.rules:hover, .rules:active {
+  background: var(--Header-Outline);
+  cursor: pointer;
+}
+
+/*================
+      DESKTOP
+==================*/
+@media (min-width:480px) {
+  .score-board h2 {
+    font-size: 30px;
+    line-height: 25px;
+  }
+
+  .board .disk-outer:nth-child(1) {
+    left: 3rem;
+  }
+  
+  .board .disk-outer:nth-child(2) {
+    bottom: 3rem;
+  }
+  
+  .board .disk-outer:nth-child(3) {
+    right: 3rem;
+  }
+}

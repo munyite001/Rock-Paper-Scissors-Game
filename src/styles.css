@@ -136,6 +136,10 @@ body {
 }
 
 .rules {
+  width: 6rem;
+  height: 2rem;
+  position: fixed;
+  bottom: 1rem;
   background: transparent;
   color: white;
   border: 1px solid white;
@@ -145,8 +149,6 @@ body {
   text-align: center;
   font-size: 16px;
   font-weight: 700;
-  width: 6rem;
-  height: 2rem;
   transition: all 0.2s linear;
 }
 

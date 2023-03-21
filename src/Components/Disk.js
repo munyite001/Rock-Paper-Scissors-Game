@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 
 export default function Disk(props)
@@ -10,7 +10,17 @@ export default function Disk(props)
         boxShadow: props.disk.shadow,
         }}>
         <div className="disk-inner">
-            <img className="choice-icon" src={props.disk.image} alt="Choice"/>
+            <img className="choice-icon" 
+            src={props.disk.image} 
+            alt="Choice"
+            onClick={() => handleClick(props)}
+            />
         </div>
     </div>);
+}
+
+
+function handleClick(props)
+{
+    const choice = setTimeout(props.setChoice, 500, props.disk.item)
 }

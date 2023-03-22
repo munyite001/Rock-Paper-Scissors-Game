@@ -22,5 +22,6 @@ export default function Disk(props)
 
 function handleClick(props)
 {
+    //  eslint-disable-next-line
     const choice = setTimeout(props.setChoice, 500, props.disk.item)
 }

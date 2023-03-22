@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import Board from './Components/Board';
 import Modal from './Components/Modal';
+import Board_2 from './Components/Board_2';
 
 export default function App()
 {
@@ -30,7 +31,7 @@ export default function App()
                 <span className="score">{score}</span>
             </div>
         </div>
-        {userChoice == null ? <Board userChoice={handleChoice}/>: "This is a test"}
+        {userChoice == null ? <Board userChoice={handleChoice}/>: <Board_2 user={userChoice}/>}
         <button className='rules-btn' onClick={togleModal}>rules</button>
     </div>
     );

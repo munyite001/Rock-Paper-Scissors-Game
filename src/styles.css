@@ -213,7 +213,7 @@ body {
 /* Step 2 */
 .board_2 {
   width: 85%;
-  max-width: 700px;
+  max-width: 500px;
   height: auto;
   margin: 3rem auto 0;
   display: flex;
@@ -294,6 +294,14 @@ body {
   .close-modal {
     top: 2.5rem;
     right: 1rem;
+  }
+
+  .board_2 .choice {
+    flex-direction: column;
+  }
+
+  .board_2 .choice .image-container {
+    margin: 3rem 0 1rem;
   }
 
 }

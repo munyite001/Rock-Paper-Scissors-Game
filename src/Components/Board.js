@@ -4,6 +4,10 @@ import { disks } from "./DiskProps";
 
 export default function Board(props)
 {
+    if (props.replayStatus)
+    {
+        props.reset();
+    }
     return (
         <div className="board">
             <Disk disk={disks[0]} setChoice={props.userChoice}/>
@@ -11,4 +15,10 @@ export default function Board(props)
             <Disk disk={disks[2]} setChoice={props.userChoice}/>
         </div>
     );
+}
+
+function resetGame(props)
+{
+    props.setPlay(false);
+    props.resetUser(null);
 }

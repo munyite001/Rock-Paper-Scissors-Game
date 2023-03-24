@@ -9,6 +9,15 @@ export default function App()
     const [score, setScore] = useState(0);
     const [userChoice, setUserChoice] = useState(null)
     const [modal, setModal] = useState(false);
+    const [playAgain, setPlayAgain] = useState(false);
+    var computerChoice = Math.floor(Math.random() *3 );
+    
+    function resetGame()
+    {
+        setUserChoice(null);
+        setPlayAgain(false);
+        computerChoice = Math.floor(Math.random() *3 );
+    }
 
     function togleModal()
     {
@@ -19,7 +28,6 @@ export default function App()
     {
         setUserChoice(val)
     }
-    console.log(userChoice)
 
     return(
     <div className="app">
@@ -31,7 +39,18 @@ export default function App()
                 <span className="score">{score}</span>
             </div>
         </div>
-        {userChoice == null ? <Board userChoice={handleChoice}/>: <Board_2 user={userChoice}/>}
+        {userChoice == null || playAgain ? 
+            <Board userChoice={handleChoice}
+            replayStatus={playAgain}
+            reset={resetGame}
+            /> : 
+            <Board_2 user={userChoice} 
+            replay={setPlayAgain}
+            replayStatus={playAgain}
+            compChoice={computerChoice}
+
+            setScore={setScore}
+            />}
         <button className='rules-btn' onClick={togleModal}>rules</button>
     </div>
     );

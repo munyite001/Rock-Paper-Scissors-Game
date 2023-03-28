@@ -7,17 +7,9 @@ import Status from "./Status";
 export default function Board2(props)
 {
 
+    
     const [displayComputerChoice, setDisplayComputerChoice] = useState(false);
     const [gameStatus, setGameStatus] = useState(null);
-
-    useEffect(() => {
-        if (gameStatus == 'win')
-        {
-            setTimeout(()=> {
-                props.setScore(props.currentScore + 1);
-            }, 2000);
-        }
-    },[gameStatus]);
 
     //  Anonymous funnction, that waits 3 seconds to display computer choice
     (function (){
@@ -32,7 +24,6 @@ export default function Board2(props)
     const user = getUserChoice(props);
     const computer = disks[props.compChoice]; //    0 => disks[0]
 
-    console.log(user.item, computer.item)
     useEffect(() => {
         determineGameStatus(user, computer, setGameStatus, props);
     }, [])
@@ -122,6 +113,13 @@ function determineGameStatus(user, computer, setGameStatus, props)
     }
 
     setGameStatus(x);
+    if (x == 'win')
+    {
+        setTimeout(() =>
+        {
+            props.setScore(props.currentScore + 1);
+        }, 2200)
+    }
 }
 
 

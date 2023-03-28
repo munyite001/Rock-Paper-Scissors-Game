@@ -11,7 +11,9 @@ export default function App()
     const [modal, setModal] = useState(false);
     const [playAgain, setPlayAgain] = useState(false);
 
-    var computerChoice = Math.floor(Math.random() *3);
+
+    console.log(`Score: ${score}`);
+    let computerChoice = Math.floor(Math.random() *3);
     
     function resetGame()
     {

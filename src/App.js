@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import Board from './Components/Board';
 import Modal from './Components/Modal';
-import Board_2 from './Components/Board_2';
+import Board2 from './Components/Board2';
 
 export default function App()
 {
@@ -10,7 +10,8 @@ export default function App()
     const [userChoice, setUserChoice] = useState(null)
     const [modal, setModal] = useState(false);
     const [playAgain, setPlayAgain] = useState(false);
-    var computerChoice = Math.floor(Math.random() *3 );
+
+    var computerChoice = Math.floor(Math.random() *3);
     
     function resetGame()
     {
@@ -44,11 +45,11 @@ export default function App()
             replayStatus={playAgain}
             reset={resetGame}
             /> : 
-            <Board_2 user={userChoice} 
+            <Board2 user={userChoice} 
             replay={setPlayAgain}
             replayStatus={playAgain}
             compChoice={computerChoice}
-
+            currentScore={score}
             setScore={setScore}
             />}
         <button className='rules-btn' onClick={togleModal}>rules</button>

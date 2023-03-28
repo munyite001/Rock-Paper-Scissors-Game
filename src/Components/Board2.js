@@ -4,10 +4,20 @@ import { disks } from "./DiskProps";
 import { useState, useEffect } from "react";
 import Status from "./Status";
 
-export default function Board_2(props)
+export default function Board2(props)
 {
+
     const [displayComputerChoice, setDisplayComputerChoice] = useState(false);
     const [gameStatus, setGameStatus] = useState(null);
+
+    useEffect(() => {
+        if (gameStatus == 'win')
+        {
+            setTimeout(()=> {
+                props.setScore(props.currentScore + 1);
+            }, 2000);
+        }
+    },[gameStatus]);
 
     //  Anonymous funnction, that waits 3 seconds to display computer choice
     (function (){
@@ -20,11 +30,11 @@ export default function Board_2(props)
     })();
 
     const user = getUserChoice(props);
-    const computer = disks[props.compChoice];
+    const computer = disks[props.compChoice]; //    0 => disks[0]
 
     console.log(user.item, computer.item)
     useEffect(() => {
-        determineGameStatus(user, computer, setGameStatus);
+        determineGameStatus(user, computer, setGameStatus, props);
     }, [])
 
     return(
@@ -35,7 +45,8 @@ export default function Board_2(props)
                     <Disk disk={user}/>
                 </div>
             </div>
-            {displayComputerChoice && <Status gameStats={gameStatus} playAgain={props.replay}/>}
+            {displayComputerChoice && 
+            <Status gameStats={gameStatus} playAgain={props.replay}/>}
             <div className="choice">
                 <h3>The House Picked</h3>
                 <div className="image-container">
@@ -58,59 +69,59 @@ function getUserChoice(props)
     }
 }
 
-function determineGameStatus(user, computer, setGameStatus, setScore)
+function determineGameStatus(user, computer, setGameStatus, props)
 {
     console.log(user.item, computer.item)
     const a = user.item.toLowerCase();
     const b = computer.item.toLowerCase();
+    var x = '';
     if(a === 'rock')
     {
         if (b ==='rock')
         {
-            setGameStatus('draw');
+            x = 'draw';
         }
         else if(b === 'paper')
         {
-            setGameStatus('lose');
+            x = 'lose';
         }
         else if (b === 'scissors')
         {
-            setGameStatus('win');
-            setScore(() => {
-                
-            })
+            x = 'win';
         }
     }
     else if (a === 'paper')
     {
         if (b === 'rock')
         {
-            setGameStatus('win');
+            x = 'win';
         }
         else if(b === 'paper')
         {
-            setGameStatus('draw');
+            x = 'draw';
         }
         else if (b === 'scissors')
         {
-            setGameStatus('lose');
+            x = 'lose';
         }
     }
     else if (a === 'scissors')
     {
         if (b === 'rock')
         {
-            setGameStatus('lose');
+            x = 'lose';
         }
         else if(b === 'paper')
         {
-            setGameStatus('win');
+            x = 'win';
         }
         else if (b === 'scissors')
         {
-            setGameStatus('draw');
+            x = 'draw';
         }
     }
+
+    setGameStatus(x);
 }
 
 

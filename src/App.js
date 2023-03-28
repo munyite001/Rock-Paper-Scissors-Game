@@ -18,14 +18,6 @@ export default function App()
     console.log("Computer Choice: " + computer);
     console.log(`Score: ${score}`);
 
-    /* eslint-disable no-unused-vars */
-    function resetGame()
-    {
-        setUserChoice(null);
-        setPlayAgain(false);
-        // computerChoice = Math.floor(Math.random() *3 );
-    }
-
     function togleModal()
     {
         setModal(!modal)
@@ -43,7 +35,8 @@ export default function App()
         {userChoice == null || playAgain ? 
             <Board userChoice={handleChoice}
             replayStatus={playAgain}
-            reset={resetGame}
+            setUserChoice={setUserChoice}
+            setPlayAgain={setPlayAgain}
             /> : 
             <Board2 user={userChoice} 
             replay={setPlayAgain}

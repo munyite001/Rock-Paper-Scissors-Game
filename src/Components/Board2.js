@@ -6,8 +6,6 @@ import Status from "./Status";
 
 export default function Board2(props)
 {
-
-    
     const [displayComputerChoice, setDisplayComputerChoice] = useState(false);
     const [gameStatus, setGameStatus] = useState(null);
 
@@ -22,8 +20,7 @@ export default function Board2(props)
     })();
 
     const user = getUserChoice(props);
-    const computer = disks[props.compChoice]; //    0 => disks[0]
-
+    const computer = props.computerChoice;
     useEffect(() => {
         determineGameStatus(user, computer, setGameStatus, props);
     }, [])
@@ -62,7 +59,7 @@ function getUserChoice(props)
 
 function determineGameStatus(user, computer, setGameStatus, props)
 {
-    console.log(user.item, computer.item)
+    //  console.log(user.item, computer.item)
     const a = user.item.toLowerCase();
     const b = computer.item.toLowerCase();
     var x = '';
@@ -118,6 +115,7 @@ function determineGameStatus(user, computer, setGameStatus, props)
         setTimeout(() =>
         {
             props.setScore(props.currentScore + 1);
+            localStorage.setItem('score', props.currentScore + 1);
         }, 2200)
     }
 }

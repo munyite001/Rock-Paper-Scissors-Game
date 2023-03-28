@@ -3,23 +3,26 @@ import { useState } from 'react';
 import Board from './Components/Board';
 import Modal from './Components/Modal';
 import Board2 from './Components/Board2';
+import ScoreBoard from './Components/ScoreBoard';
+import { disks } from './Components/DiskProps';
 
 export default function App()
 {
-    const [score, setScore] = useState(0);
+    let s = localStorage.getItem('score') == undefined ? 0 : +localStorage.getItem('score');
+    const [score, setScore] = useState(s);
     const [userChoice, setUserChoice] = useState(null)
     const [modal, setModal] = useState(false);
     const [playAgain, setPlayAgain] = useState(false);
 
-
+    let computer = disks[Math.floor(Math.random() *3)];
+    console.log("Computer Choice: " + computer);
     console.log(`Score: ${score}`);
-    let computerChoice = Math.floor(Math.random() *3);
-    
+    // console.log(`Computer Choice: ${computerChoice}`);
     function resetGame()
     {
         setUserChoice(null);
         setPlayAgain(false);
-        computerChoice = Math.floor(Math.random() *3 );
+        // computerChoice = Math.floor(Math.random() *3 );
     }
 
     function togleModal()
@@ -35,13 +38,7 @@ export default function App()
     return(
     <div className="app">
         {modal && (<Modal setModal={togleModal}/>)}
-        <div className="score-board">
-            <h2>ROCK<br/>PAPER<br/>SCISSORS</h2>
-            <div className="score-container">
-                <h3>Score</h3>
-                <span className="score">{score}</span>
-            </div>
-        </div>
+        <ScoreBoard score={score}/>
         {userChoice == null || playAgain ? 
             <Board userChoice={handleChoice}
             replayStatus={playAgain}
@@ -50,7 +47,7 @@ export default function App()
             <Board2 user={userChoice} 
             replay={setPlayAgain}
             replayStatus={playAgain}
-            compChoice={computerChoice}
+            computerChoice={computer}
             currentScore={score}
             setScore={setScore}
             />}

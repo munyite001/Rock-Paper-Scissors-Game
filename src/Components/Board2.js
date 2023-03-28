@@ -110,7 +110,7 @@ function determineGameStatus(user, computer, setGameStatus, props)
     }
 
     setGameStatus(x);
-    if (x == 'win')
+    if (x === 'win')
     {
         setTimeout(() =>
         {

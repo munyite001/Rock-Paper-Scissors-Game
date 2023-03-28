@@ -17,13 +17,15 @@ export default function App()
     let computer = disks[Math.floor(Math.random() *3)];
     console.log("Computer Choice: " + computer);
     console.log(`Score: ${score}`);
-    // console.log(`Computer Choice: ${computerChoice}`);
+
+    /* eslint-disable */
     function resetGame()
     {
         setUserChoice(null);
         setPlayAgain(false);
         // computerChoice = Math.floor(Math.random() *3 );
     }
+    /* eslint-enable */
 
     function togleModal()
     {

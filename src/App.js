@@ -8,7 +8,7 @@ import { disks } from './Components/DiskProps';
 
 export default function App()
 {
-    let s = localStorage.getItem('score') == undefined ? 0 : +localStorage.getItem('score');
+    let s = localStorage.getItem('score') === undefined ? 0 : +localStorage.getItem('score');
     const [score, setScore] = useState(s);
     const [userChoice, setUserChoice] = useState(null)
     const [modal, setModal] = useState(false);
@@ -18,14 +18,13 @@ export default function App()
     console.log("Computer Choice: " + computer);
     console.log(`Score: ${score}`);
 
-    /* eslint-disable */
+    /* eslint-disable no-unused-vars */
     function resetGame()
     {
         setUserChoice(null);
         setPlayAgain(false);
         // computerChoice = Math.floor(Math.random() *3 );
     }
-    /* eslint-enable */
 
     function togleModal()
     {
